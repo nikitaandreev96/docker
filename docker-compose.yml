@@ -17,7 +17,7 @@ services:
             static-network:
                 ipv4_address: 172.100.100.10
 
-    php-fpm:
+    php:
         build:
             context: "./config"
             dockerfile: "dockerFilePHP-fpm"
