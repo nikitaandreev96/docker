@@ -31,10 +31,17 @@ services:
         networks:
             static-network:
                 ipv4_address: 172.100.100.11
+        links:
+            - mysql
 
     mysql:
         image: mariadb
+        container_name: mysql
         restart: always
+        ports:
+            - 3306:3306
+        volumes:
+            - ./dbase:/var/lib/mysql/
         environment:
             MYSQL_ROOT_PASSWORD: 12Fairy34!
         networks:
