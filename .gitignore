@@ -1,2 +1,2 @@
-/htdocs/*
-/dbase/*
+/nginx-php73-mysql/htdocs/*
+/nginx-php73-mysql/dbase/*

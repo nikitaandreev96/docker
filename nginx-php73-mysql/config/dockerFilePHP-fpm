@@ -1,0 +1,20 @@
+FROM php:7.3.6-fpm
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install -y \
+    g++ \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    exif \
+    gettext \
+    memcached \
+    wget \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install -j$(nproc) iconv \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
+    && groupadd valdeg -g 1000 \
+    && useradd valdeg -g valdeg \
+    && find /usr/local/etc/php-fpm.d/ -type f -exec sed -i 's/www-data/valdeg/g' {} \;
+
+CMD ["php-fpm"]
