@@ -43,7 +43,7 @@ services:
         volumes:
             - ./dbase:/var/lib/mysql/
         environment:
-            MYSQL_ROOT_PASSWORD: 12Fairy34!
+            MYSQL_ROOT_PASSWORD: pass
         networks:
             static-network:
                 ipv4_address: 172.100.100.12
